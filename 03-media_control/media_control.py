@@ -18,7 +18,7 @@ COLOR_CHANNELS = 3
 LABELS = ['like', 'no_gesture', 'dislike', 'rock']
 WINDOW_WIDTH = 640
 WINDOW_HEIGHT = 480
-WAIT_TIME_AFTER_GESTURE_RECOGNITION = 0.6
+WAIT_TIME_AFTER_GESTURE_RECOGNITION = 0.7
 
 def main():
     load_model()
@@ -70,7 +70,7 @@ def capture_video():
         reshaped = resized.reshape(-1, IMG_SIZE, IMG_SIZE, COLOR_CHANNELS)
         reshaped.shape
         # Predict the gesture and activate the action
-        prediction = model.predict(reshaped)
+        prediction = model.predict(reshaped, verbose = 0)
         label = LABELS[np.argmax(prediction)]
         if(label == 'rock' and found_markers):
             start_pause_track()
