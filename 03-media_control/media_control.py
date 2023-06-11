@@ -25,7 +25,7 @@ def main():
     capture_video()
 
 def capture_video():
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     while(True):
         found_markers = False
         ret, frame = cap.read()
