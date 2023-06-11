@@ -64,10 +64,12 @@ def capture_video():
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'): # to quite the program
             break
+        # Transform the image for the image for the prediction
         resized = cv2.resize(frame[50:350, 60:210], SIZE)
         resized.shape
         reshaped = resized.reshape(-1, IMG_SIZE, IMG_SIZE, COLOR_CHANNELS)
         reshaped.shape
+        # Predict the gesture and activate the action
         prediction = model.predict(reshaped)
         label = LABELS[np.argmax(prediction)]
         if(label == 'rock' and found_markers):
